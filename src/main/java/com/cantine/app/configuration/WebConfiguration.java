@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -48,15 +47,15 @@ public class WebConfiguration extends WebMvcConfigurerAdapter{
 //		return dataSource;
 //	}
 
-	@Bean
-	public DataSource getDataSource(){
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/cantine");
-		dataSource.setUsername("postgres");
-		dataSource.setPassword("12345");
-	return dataSource;
-	}
+//	@Bean
+//	public DataSource getDataSource(){
+//		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//		dataSource.setDriverClassName("org.postgresql.Driver");
+//		dataSource.setUrl("jdbc:postgresql://localhost:5432/cantine");
+//		dataSource.setUsername("postgres");
+//		dataSource.setPassword("12345");
+//	return dataSource;
+//	}
 	
 	
 	@Bean
@@ -73,15 +72,11 @@ public class WebConfiguration extends WebMvcConfigurerAdapter{
 	@Bean
 	public ViewResolver viewRsolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/WEB-INF/views/");
+		resolver.setPrefix("/WEB-INF/view/");
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
-	// @Override
-	// public void addCorsMappings(CorsRegistry registry) {
-	// registry.addMapping("/**").allowedOrigins("*");
-	// }
-	
+
 	// Upload File 
 	@Bean
 	public MultipartResolver multipartResolver() {
@@ -90,9 +85,6 @@ public class WebConfiguration extends WebMvcConfigurerAdapter{
 		return multipartResolver;
 	}
 	
-	@Bean
-	public String urlMemo(){
-		return environment.getProperty("MEMO.URL");
-	}
+	
 
 }

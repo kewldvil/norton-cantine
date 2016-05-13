@@ -9,7 +9,6 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 public class WebInitializer implements WebApplicationInitializer {
-	
 	public void onStartup(ServletContext container) throws ServletException {
 		
 		/*AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
@@ -20,6 +19,7 @@ public class WebInitializer implements WebApplicationInitializer {
 		AnnotationConfigWebApplicationContext servletContext = new AnnotationConfigWebApplicationContext();
 		// 2.Register the Configuration Class
 		servletContext.register(WebConfiguration.class);
+		servletContext.setServletContext(container);
 
 		// 3.Create DispatacherServelt, add it to container,
 		// and assign it to the servletRegisteration
@@ -31,7 +31,6 @@ public class WebInitializer implements WebApplicationInitializer {
 		container.addListener(new SessionConfig());
 		
 	}
-
+}
 
 	
-}
