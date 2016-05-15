@@ -35,6 +35,63 @@ public class Transaction {
 	@ManyToOne
 	@JoinColumn(name="transactionTypeId")
 	private TransactionType transactionType;
+
+	public int getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
+	}
+
+	public Date getTransactionDate() {
+		return transactionDate;
+	}
+
+	public void setTransactionDate(Date transactionDate) {
+		this.transactionDate = transactionDate;
+	}
+
+	public double getTransactionAmountInRiel() {
+		return transactionAmountInRiel;
+	}
+
+	public void setTransactionAmountInRiel(double transactionAmountInRiel) {
+		this.transactionAmountInRiel = transactionAmountInRiel;
+	}
+
+	public float getTransactionAmountInDollar() {
+		return transactionAmountInDollar;
+	}
+
+	public void setTransactionAmountInDollar(float transactionAmountInDollar) {
+		this.transactionAmountInDollar = transactionAmountInDollar;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public TransactionType getTransactionType() {
+		return transactionType;
+	}
+
+	public void setTransactionType(TransactionType transactionType) {
+		this.transactionType = transactionType;
+	}
+
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", transactionDate=" + transactionDate
+				+ ", transactionAmountInRiel=" + transactionAmountInRiel + ", transactionAmountInDollar="
+				+ transactionAmountInDollar + ", user=" + user + ", transactionType=" + transactionType + "]";
+	}
 	
 
+	
+	
 }

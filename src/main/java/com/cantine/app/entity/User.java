@@ -1,16 +1,21 @@
 package com.cantine.app.entity;
 
+
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,10 +38,28 @@ public class User {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Transaction> transaction;
+	
+	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinTable(name = "TBL_USER_ROLE", joinColumns = { 
+			@JoinColumn(name = "userId", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "roleId", 
+					nullable = false, updatable = false) })
+	private Set<Role> roles = new HashSet<Role>(0);
+	
+	
+	public User(){
+		
+	}
+	
 
-	@ManyToOne
-	@JoinColumn(name = "userRoleId")
-	private UserRole userRole;
+
+
+
+	public User(String username, String password, boolean enabled, boolean accountNonExpired,
+			boolean credentialsNonExpired, boolean accountNonLocked, Collection authorities) {
+		// TODO Auto-generated constructor stub
+	}
+
 
 	public int getUserId() {
 		return userId;
@@ -85,19 +108,19 @@ public class User {
 	public void setTransaction(List<Transaction> transaction) {
 		this.transaction = transaction;
 	}
+	
+	
+	
 
-	public UserRole getUserRole() {
-		return userRole;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", name=" + name + ", username=" + username + ", password=" + password
-				+ ", isActive=" + isActive + ", transaction=" + transaction + ", userRole=" + userRole + "]";
-	}
+	
+	
 
 }

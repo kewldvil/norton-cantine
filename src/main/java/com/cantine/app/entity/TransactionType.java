@@ -22,6 +22,39 @@ public class TransactionType {
 	private int transactionTypeId;
 	private String transactionTypeName;
 	
+	
 	@OneToMany(mappedBy="transactionType")
 	private List<Transaction> transaction;
+	
+	public int getTransactionTypeId() {
+		return transactionTypeId;
+	}
+
+	public void setTransactionTypeId(int transactionTypeId) {
+		this.transactionTypeId = transactionTypeId;
+	}
+
+	public String getTransactionTypeName() {
+		return transactionTypeName;
+	}
+
+	public void setTransactionTypeName(String transactionTypeName) {
+		this.transactionTypeName = transactionTypeName;
+	}
+
+	public List<Transaction> getTransaction() {
+		return transaction;
+	}
+
+	public void setTransaction(List<Transaction> transaction) {
+		this.transaction = transaction;
+	}
+
+	@Override
+	public String toString() {
+		return "TransactionType [transactionTypeId=" + transactionTypeId + ", transactionTypeName="
+				+ transactionTypeName + ", transaction=" + transaction + "]";
+	}
+
+
 }
