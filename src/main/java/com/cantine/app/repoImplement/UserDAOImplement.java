@@ -1,11 +1,13 @@
 package com.cantine.app.repoImplement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cantine.app.entity.User;
 import com.cantine.app.repository.IUserDAO;
@@ -23,11 +25,21 @@ public class UserDAOImplement  implements IUserDAO{
 		ss.save(users);
 		
 	}
-
+	@Transactional
 	@Override
 	public User findByUserame(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> users = new ArrayList<User>();
+
+		users = sf.getCurrentSession()
+			.createQuery("from User where username=?")
+			.setParameter(0, username)
+			.list();
+		if (users.size() > 0) {
+			return users.get(0);
+		} else {
+			return null;
+		}
+
 	}
 
 	@Override

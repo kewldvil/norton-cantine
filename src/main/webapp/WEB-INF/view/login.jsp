@@ -7,6 +7,9 @@
 <head>
 <title>Norton Cantine Login</title>
 <meta charset="utf-8">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel='stylesheet' type='text/css' />
+
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel='stylesheet' type='text/css' />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +18,7 @@
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 
 </script>
+<script type="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--webfonts-->
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700'

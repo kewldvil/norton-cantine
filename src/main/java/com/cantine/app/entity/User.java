@@ -21,6 +21,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SelectBeforeUpdate;
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "TBL_USER")
@@ -46,21 +47,6 @@ public class User {
 					nullable = false, updatable = false) })
 	private Set<Role> roles = new HashSet<Role>(0);
 	
-	
-	public User(){
-		
-	}
-	
-
-
-
-
-	public User(String username, String password, boolean enabled, boolean accountNonExpired,
-			boolean credentialsNonExpired, boolean accountNonLocked, Collection authorities) {
-		// TODO Auto-generated constructor stub
-	}
-
-
 	public int getUserId() {
 		return userId;
 	}
