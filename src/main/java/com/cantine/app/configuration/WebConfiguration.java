@@ -8,13 +8,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
+
 
 @Configuration 
 /*
@@ -26,6 +29,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * replaces <mvc:annotation-driven>.
  */
 @ComponentScan(basePackages = "com.cantine.app")
+//@ImportResource("classpath*:tiles.xml")
 public class WebConfiguration extends WebMvcConfigurerAdapter{
 	
 	@Autowired Environment environment;
@@ -69,13 +73,33 @@ public class WebConfiguration extends WebMvcConfigurerAdapter{
 	    registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
 	
-	@Bean
-	public ViewResolver viewRsolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/WEB-INF/view/");
-		resolver.setSuffix(".jsp");
-		return resolver;
-	}
+//	@Bean
+//	public ViewResolver viewRsolver() {
+//		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//		resolver.setPrefix("/WEB-INF/view/");
+//		resolver.setSuffix(".jsp");
+//		return resolver;
+//	}
+//	
+
+    @Bean
+    public UrlBasedViewResolver viewResolver() {
+        UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
+        viewResolver.setViewClass(TilesView.class);
+        return viewResolver;
+    }
+
+    @Bean
+    public TilesConfigurer tilesConfigurer() {
+        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+        tilesConfigurer.setDefinitions(new String[]{
+//                "/WEB-INF/layouts/tiles.xml",
+//                "/WEB-INF/view/**/tiles.xml"
+        		"/WEB-INF/tiles.xml"
+        });
+        tilesConfigurer.setCheckRefresh(true);
+        return tilesConfigurer;
+    }
 
 	// Upload File 
 	@Bean

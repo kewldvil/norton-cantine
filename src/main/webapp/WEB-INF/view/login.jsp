@@ -10,7 +10,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel='stylesheet' type='text/css' />
 
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
+<link href="${pageContext.request.contextPath}/resources/login-assets/css/style.css"
 	rel='stylesheet' type='text/css' />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript">

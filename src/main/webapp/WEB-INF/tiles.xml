@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- templates -->
+	<definition name="base" template="/WEB-INF/view/tiles/default.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/view/tiles/_header.jsp"></put-attribute>
+		<put-attribute name="content" value=""></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/view/tiles/_footer.jsp"></put-attribute>
+		<put-list-attribute name="javascripts">
+			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+		</put-list-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+			<add-attribute value="/resources/login-assets/css/style.css" />
+			<add-attribute value="http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700" />
+		</put-list-attribute>
+	</definition>
+	
+	
+	<!-- LOGIN PAGE -->
+	<definition name="login" extends="base">
+		<put-attribute name="title" value="NORTON CANTINE LOGIN"></put-attribute>
+		<put-attribute name="header" value=""></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/view/login.jsp"></put-attribute>
+		<put-attribute name="footer" value=""></put-attribute>
+		<put-list-attribute name="javascripts">
+			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+		</put-list-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+			<add-attribute value="/resources/login-assets/css/style.css" />
+			<add-attribute value="http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700" />
+		</put-list-attribute>
+	</definition>
+
+
+	<!-- MainController -->
+	<definition name="index" extends="base">
+	  <put-attribute name="title" value="NORTON CANTINE"/>
+	  <put-attribute name="content" value="/WEB-INF/view/index.jsp"/>
+	</definition>
+</tiles-definitions>
