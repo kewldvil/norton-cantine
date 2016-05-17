@@ -164,11 +164,11 @@
 		</dependency>
 
 		<!-- Websocket -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>javax.websocket</groupId>
 			<artifactId>javax.websocket-api</artifactId>
 			<version>1.0</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- Swagger -->
 		<dependency>

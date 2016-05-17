@@ -8,14 +8,75 @@
 		<put-attribute name="title" value=""></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/view/tiles/_header.jsp"></put-attribute>
 		<put-attribute name="content" value=""></put-attribute>
+		<put-attribute name="sidebar" value="/WEB-INF/view/tiles/_sidebar.jsp"></put-attribute>
+		<put-attribute name="quick_sidebar" value="/WEB-INF/view/tiles/_quick_sidebar.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/view/tiles/_footer.jsp"></put-attribute>
 		<put-list-attribute name="javascripts">
+			<add-attribute value="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"/>
 			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+			<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+			<add-attribute value="/resources/assets/global/plugins/jquery-ui/jquery-ui.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/bootstrap/js/bootstrap.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jquery.blockui.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jquery.cokie.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/uniform/jquery.uniform.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"/>
+			<!-- END CORE PLUGINS -->
+			<!-- BEGIN PAGE LEVEL PLUGINS -->
+			<add-attribute value="/resources/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js"/>
+			<add-attribute value="/resources/assets/global/plugins/flot/jquery.flot.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/flot/jquery.flot.resize.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/flot/jquery.flot.categories.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jquery.pulsate.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/bootstrap-daterangepicker/moment.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"/>
+			<!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
+			<add-attribute value="/resources/assets/global/plugins/fullcalendar/fullcalendar.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js"/>
+			<add-attribute value="/resources/assets/global/plugins/jquery.sparkline.min.js"/>
+			<add-attribute value="/resources/assets/pages/scripts/jquery.gritter.js"/>
+			<add-attribute value="/resources/assets/global/plugins/amcharts/amcharts/amcharts.js"/>
+			<!-- END PAGE LEVEL PLUGINS -->
+			<!-- BEGIN PAGE LEVEL SCRIPTS -->
+			<add-attribute value="/resources/assets/global/scripts/app.js"/>
+			<add-attribute value="/resources/assets/layouts/layout3/scripts/layout.js"/>
+			<add-attribute value="/resources/assets/layouts/layout3/scripts/quick-sidebar.js"/>
+			<add-attribute value="/resources/assets/layouts/layout3/scripts/index.js"/>
+			<add-attribute value="/resources/assets/layouts/layout3/scripts/tasks.js"/>
 		</put-list-attribute>
 		<put-list-attribute name="stylesheets">
-			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-			<add-attribute value="/resources/login-assets/css/style.css" />
-			<add-attribute value="http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700" />
+			<!-- BEGIN GLOBAL MANDATORY STYLES -->
+			<add-attribute value="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700"/>
+			<add-attribute value="/resources/assets/global/plugins/font-awesome/css/font-awesome.min.css"/>
+			<add-attribute value="/resources/assets/global/plugins/simple-line-icons/simple-line-icons.min.css"/>
+			<add-attribute value="/resources/assets/global/plugins/bootstrap/css/bootstrap.min.css"/>
+			<add-attribute value="/resources/assets/global/plugins/uniform/css/uniform.default.css"/>
+			<add-attribute value="/resources/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"/>
+			<!-- END GLOBAL MANDATORY STYLES -->
+			<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+			<add-attribute value="/resources/assets/pages/css/jquery.gritter.css"/>
+			<add-attribute value="/resources/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+			<add-attribute value="/resources/assets/global/plugins/fullcalendar/fullcalendar.css"/>
+			<add-attribute value="/resources/assets/global/plugins/jqvmap/jqvmap/jqvmap.css"/>
+			<!-- END PAGE LEVEL PLUGIN STYLES -->
+			<!-- BEGIN PAGE STYLES -->
+			<add-attribute value="/resources/assets/pages/css/tasks.css"/>
+			<!-- END PAGE STYLES -->
+			<!-- BEGIN THEME STYLES -->
+			<add-attribute value="/resources/assets/global/css/components.css"/>
+			<add-attribute value="/resources/assets/global/css/plugins.css"/>
+			<add-attribute value="/resources/assets/layouts/layout3/css/layout.css"/>
+			<add-attribute value="/resources/assets/layouts/layout3/css/themes/default.css" id="style_color"/>
+			<add-attribute value="/resources/assets/layouts/layout3/css/custom.css"/>
+			<!-- END THEME STYLES -->
 		</put-list-attribute>
 	</definition>
 	
@@ -37,7 +98,7 @@
 	</definition>
 
 
-	<!-- MainController -->
+	<!-- Home -->
 	<definition name="index" extends="base">
 	  <put-attribute name="title" value="NORTON CANTINE"/>
 	  <put-attribute name="content" value="/WEB-INF/view/index.jsp"/>
