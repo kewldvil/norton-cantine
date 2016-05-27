@@ -18,12 +18,13 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SelectBeforeUpdate;
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name="TBL_ROLE")
 @DynamicUpdate(value=true)
 @SelectBeforeUpdate(value=true) 
-public class Role {
+public class Role implements GrantedAuthority{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -53,6 +54,11 @@ public class Role {
 	}
 	public void setUsers(Set<User> users) {
 		this.users = users;
+	}
+	@Override
+	public String getAuthority() {
+		// TODO Auto-generated method stub
+		return roleName;
 	}
 	
 

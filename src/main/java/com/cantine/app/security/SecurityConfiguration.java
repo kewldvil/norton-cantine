@@ -15,7 +15,10 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.cantine.app.serviceImplement.MyUserDetailServiceImplement;
 
 @Configuration
 //@EnableWebSecurity(debug=true)
@@ -23,39 +26,41 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource dataSource;
-//	@Autowired
-//	@Qualifier("userDetailsService")
-//	UserDetailsService userDetailsService;
+	
+	@Autowired 
+	@Qualifier("userDetailServiceImplement")
+	MyUserDetailServiceImplement userDetailsService;
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/resources/**");
 	}
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//	@Autowired
+//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		// auth.inMemoryAuthentication().withUser("bill").password("abc123").roles("USER");
 		// auth.inMemoryAuthentication().withUser("admin").password("root123").roles("ADMIN");
 		// auth.inMemoryAuthentication().withUser("dba").password("root123").roles("ADMIN","DBA");//dba
 		// have two roles.
-		auth.jdbcAuthentication().dataSource(dataSource)
+//		auth.jdbcAuthentication().dataSource(dataSource)
 //				.passwordEncoder(passwordEncoder())
-				.usersByUsernameQuery("select username,password,isactive from tbl_user where username=?")
-				.authoritiesByUsernameQuery("select username,rolename from tbl_user u INNER join tbl_user_role ur on u.userid=ur.userid inner join tbl_role r on ur.roleid=r.roleid where u.username=?");
-	}
+//				.usersByUsernameQuery("select username,password,isactive from tbl_user where username=?")
+//				.authoritiesByUsernameQuery("select username,rolename from tbl_user u INNER join tbl_user_role ur on u.userid=ur.userid inner join tbl_role r on ur.roleid=r.roleid where u.username=?");
+//	}
 
-//	@Autowired
-//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-////		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-//		auth.userDetailsService(userDetailsService);
-//	}
-//	
-//	@Bean
-//	public PasswordEncoder passwordEncoder(){
-//		PasswordEncoder encoder = (PasswordEncoder) new BCryptPasswordEncoder();
-//		return encoder;
-//	}
-//	
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+	
+	}
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder(){
+		return new BCryptPasswordEncoder();
+	}
+	
+	
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 

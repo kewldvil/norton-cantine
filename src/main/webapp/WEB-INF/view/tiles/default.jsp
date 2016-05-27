@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
@@ -7,11 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta content="" name="description" />
-<meta content="" name="author" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="favicon.ico" />
 <title><tiles:insertAttribute name="title"></tiles:insertAttribute></title>
 <!-- stylesheets -->
@@ -20,7 +18,7 @@
 </c:forEach>
 <!-- end stylesheets -->
 </head>
-<body>
+<body class="page-container-bg-solid page-boxed">
 
 	<!--[if lt IE 10]>
         <p class="alert alert-warning">
@@ -52,22 +50,6 @@
 	<c:forEach var="script" items="${javascripts}">
 		<script src="<c:url value="${script}"/>"></script>
 	</c:forEach>
-	<script>
-		jQuery(document).ready(function() {
-			App.init(); // init metronic core componets
-			Layout.init(); // init layout
-			QuickSidebar.init() // init quick sidebar
-			Index.init();
-			Index.initDashboardDaterange();
-			Index.initJQVMAP(); // init index page's custom scripts
-			Index.initCalendar(); // init index page's custom scripts
-			Index.initCharts(); // init index page's custom scripts
-			Index.initChat();
-			Index.initMiniCharts();
-			Index.initIntro();
-			Tasks.initDashboardWidget();
-		});
-	</script>
 	<!-- END JAVASCRIPTS -->
 	<!-- end scripts -->
 

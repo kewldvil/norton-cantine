@@ -25,14 +25,14 @@ public class UserDAOImplement  implements IUserDAO{
 		ss.save(users);
 		
 	}
+	@SuppressWarnings("unchecked")
 	@Transactional
 	@Override
 	public User findByUserame(String username) {
 		List<User> users = new ArrayList<User>();
-
 		users = sf.getCurrentSession()
-			.createQuery("from User where username=?")
-			.setParameter(0, username)
+			.createQuery("from User where username=:username")
+			.setString("username", username)
 			.list();
 		if (users.size() > 0) {
 			return users.get(0);

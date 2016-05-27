@@ -28,13 +28,13 @@
 <body>
 
 	<!-----start-main---->
-	<div class="login-form">
+	<div class="login-form"><%-- 
 		<div class="head">
 			<img
-				src="${pageContext.request.contextPath}/resources/images/mem2.jpg"
-				alt="" />
+				src="${pageContext.request.contextPath}/resources/login-assets/images/norton_logo.png"
+				alt=""  width="150px" height="150px"/>
 
-		</div>
+		</div> --%>
 		<form action="login" method="POST">
 			<c:if test="${param.error != null}">
 				<div class="alert alert-danger">
